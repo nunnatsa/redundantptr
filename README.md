@@ -20,7 +20,6 @@ s := myType{int32PointerField: &value}
 ```
 
 In projects that uses kubernetes packages, it is possible to use the `ptr.To()` function to get rid of these variables. For example:
-```
 ```golang
 const someConstant = int32(42)
 
