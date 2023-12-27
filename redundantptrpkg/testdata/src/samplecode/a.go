@@ -13,13 +13,22 @@ func createT() *t {
 		a = "A"
 	}
 
-	return &t{
-		a: &a,
-		b: &b,
-		c: &c,
+	t1 := t{}
+
+	ddd := &t1
+	ddd.b = &b // want "suspect redundant pointer"
+
+	t1.a = &a // want "suspect redundant pointer"
+
+	g := &t{
+		a: &a, // want "suspect redundant pointer"
+		b: &b, // want "suspect redundant pointer"
+		c: &c, // want "suspect redundant pointer"
 		t: &t2{
-			p: &pi,
-			t: &dur,
+			p: &pi,  // want "suspect redundant pointer"
+			t: &dur, // want "suspect redundant pointer"
 		},
 	}
+
+	return g
 }
